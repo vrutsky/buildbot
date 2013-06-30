@@ -203,7 +203,7 @@ class SVN(Source):
         if self.username:
             command.extend(['--username', self.username])
         if self.password:
-            command.extend(['--password', self.password])
+            command.extend(['--password', (self.password, "*" * 8)])
         if self.depth:
             command.extend(['--depth', self.depth])
         if self.extra_args:
@@ -215,7 +215,10 @@ class SVN(Source):
                                            timeout=self.timeout,
                                            collectStdout=collectStdout)
         cmd.useLog(self.stdio_log, False)
-        log.msg("Starting SVN command : svn %s" % (" ".join(command), ))
+        command_str = " ".join([
+            arg[0] if isinstance(arg, tuple) and len(arg) == 2 else arg
+            for arg in command])
+        log.msg("Starting SVN command : svn %s" % (command_str, ))
         d = self.runCommand(cmd)
         def evaluateCommand(cmd):
             if cmd.didFail():
