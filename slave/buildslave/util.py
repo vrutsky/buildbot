@@ -67,6 +67,10 @@ class Obfuscated:
             for elt in command:
                 if isinstance(elt, Obfuscated):
                     rv.append(elt.real)
+                elif isinstance(elt, tuple) and len(elt) == 2:
+                    # If one of strings of command is tuple with two items,
+                    # treat it as (real, fake) command parts.
+                    rv.append(elt[0])
                 else:
                     rv.append(Obfuscated.to_text(elt))
         return rv
@@ -79,6 +83,10 @@ class Obfuscated:
             for elt in command:
                 if isinstance(elt, Obfuscated):
                     rv.append(elt.fake)
+                elif isinstance(elt, tuple) and len(elt) == 2:
+                    # If one of strings of command is tuple with two items,
+                    # treat it as (real, fake) command parts.
+                    rv.append(elt[1])
                 else:
                     rv.append(Obfuscated.to_text(elt))
         return rv

@@ -203,8 +203,15 @@ class ShellCommand(buildstep.LoggingBuildStep):
                 # WithProperties and Property don't have __len__
                 return ["???"]
 
+            # TODO: Is flatten actually needed?  Why not do flatting on
+            # calling side?
             # flatten any nested lists
-            words = flatten(words, (list, tuple))
+            #words = flatten(words, (list, tuple))
+
+            # Use fake arguments if they provided
+            words = [
+                w[1] if (isinstance(w, tuple) and len(w) == 2) else w
+                for w in words]
 
             # strip instances and other detritus (which can happen if a
             # description is requested before rendering)
@@ -243,7 +250,10 @@ class ShellCommand(buildstep.LoggingBuildStep):
         kwargs = buildstep.LoggingBuildStep.buildCommandKwargs(self)
         kwargs.update(self.remote_kwargs)
 
-        kwargs['command'] = flatten(self.command, (list, tuple))
+        # TODO: Is flatten actually needed?  Why not do flatting on
+        # calling side?
+        #kwargs['command'] = flatten(self.command, (list, tuple))
+        kwargs['command'] = self.command
 
         # check for the usePTY flag
         if kwargs.has_key('usePTY') and kwargs['usePTY'] != 'slave-config':
