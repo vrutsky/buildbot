@@ -148,7 +148,6 @@ class PyFlakes(ShellCommand):
         return SUCCESS
 
 class PyLint(ShellCommand):
-
     '''A command that knows about pylint output.
     It is a good idea to add --output-format=parseable to your
     command, since it includes the filename in the message.
@@ -234,7 +233,6 @@ class PyLint(ShellCommand):
         return SUCCESS
 
 class Sphinx(ShellCommand):
-
     ''' A Step to build sphinx documentation '''
 
     name = "sphinx"

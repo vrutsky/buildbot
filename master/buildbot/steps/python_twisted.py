@@ -31,7 +31,6 @@ import re
 # BuildSteps that are specific to the Twisted source tree
 
 class HLint(ShellCommand):
-
     """I run a 'lint' checker over a set of .xhtml files. Any deviations
     from recommended style is flagged and put in the output log.
 
@@ -178,7 +177,6 @@ class TrialTestCaseCounter(LogLineObserver):
 UNSPECIFIED=() # since None is a valid choice
 
 class Trial(ShellCommand):
-
     """
     There are some class attributes which may be usefully overridden
     by subclasses. 'trialMode' and 'trialArgs' can influence the trial

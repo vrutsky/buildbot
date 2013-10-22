@@ -340,7 +340,7 @@ class BaseScheduler(scheduler.SchedulerMixin, unittest.TestCase):
                     })
         d.addCallback(check)
         return d
-        
+
     def test_addBuildsetForChanges_multiple_changes_single_codebase(self):
         sched = self.makeScheduler(name='n', builderNames=['b', 'c'])
         self.db.insertTestData([

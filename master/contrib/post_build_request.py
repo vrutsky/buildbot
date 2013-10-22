@@ -46,9 +46,9 @@ def buildURL( options ):
         author = options.author
     else:
         author = getpass.getuser()
- 
+
     urlDict['author'] = author
-    
+
     if options.files:
         urlDict['files'] = json.dumps(options.files)
 

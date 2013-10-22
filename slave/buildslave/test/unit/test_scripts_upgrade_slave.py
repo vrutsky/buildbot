@@ -38,7 +38,6 @@ class TestUpgradeSlave(misc.IsBuildslaveDirMixin,
                        misc.StdoutAssertionsMixin,
                        misc.FileIOMixin,
                        unittest.TestCase):
-
     """
     Test buildslave.scripts.runner.upgradeSlave()
     """

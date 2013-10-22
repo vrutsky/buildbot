@@ -38,7 +38,6 @@ class FakePBManager(service.MultiService):
         return defer.succeed(None)
 
 class FakeRegistration(object):
-
     def __init__(self, pbmanager, portstr, username):
         self._portstr = portstr
         self._username = username

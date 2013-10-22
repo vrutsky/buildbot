@@ -27,7 +27,6 @@ def deprecatedImport(fn):
     return wrapper
 
 class OldImportPaths(unittest.TestCase):
-
     """
     Test that old, deprecated import paths still work.
     """

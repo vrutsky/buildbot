@@ -34,7 +34,6 @@ png_files = dict(
 png_files_by_contents = dict((y, x) for (x, y) in png_files.iteritems())
 
 class TestPngStatusResource(unittest.TestCase):
-
     """Simple unit tests to check Png Status resource
     """
 
@@ -89,7 +88,6 @@ for size in None, 'small', 'normal', 'large':
                     self.do_test(size, status_code, exp))
 
 class FakeStatus(object):
-
     def __init__(self, status_code=results.SUCCESS):
         self._status_code = status_code
 
@@ -101,7 +99,6 @@ class FakeStatus(object):
 
 
 class FakeBuilder(object):
-
     def __init__(self, status_code):
         self._status_code = status_code
 
@@ -109,7 +106,6 @@ class FakeBuilder(object):
         return FakeBuild(self._status_code)
 
 class FakeBuild(object):
-
     def __init__(self, status_code):
         self._status_code = status_code
 

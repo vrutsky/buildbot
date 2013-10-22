@@ -119,7 +119,7 @@ class TextLog(Resource):
 
         if not self.asText:
             self.template = req.site.buildbot_service.templates.get_template("logs.html")
-            
+
             data = self.template.module.page_header(
                     pageTitle = "Log File contents",
                     texturl = req.childLink("text"),
@@ -135,7 +135,7 @@ class TextLog(Resource):
             req.setHeader("content-type", "text/plain; charset=utf-8")
         else:
             req.setHeader("content-type", "text/html; charset=utf-8")
-        
+
     def finished(self):
         if not self.req:
             return
@@ -150,7 +150,7 @@ class TextLog(Resource):
         # break the cycle, the Request's .notifications list includes the
         # Deferred (from req.notifyFinish) that's pointing at us.
         self.req = None
-        
+
         # release template
         self.template = None
 

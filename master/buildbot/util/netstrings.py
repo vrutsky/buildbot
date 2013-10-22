@@ -18,12 +18,10 @@ from zope.interface import implements
 from twisted.internet.interfaces import IAddress, ITransport
 
 class NullAddress(object):
-
     "an address for NullTransport"
     implements(IAddress)
 
 class NullTransport(object):
-
     "a do-nothing transport to make NetstringReceiver happy"
     implements(ITransport)
     def write(self, data): raise NotImplementedError
@@ -35,7 +33,6 @@ class NullTransport(object):
         return NullAddress
 
 class NetstringParser(basic.NetstringReceiver):
-
     """
     Adapts the Twisted netstring support (which assumes it is on a socket) to
     work on simple strings, too.  Call the C{feed} method with arbitrary blocks

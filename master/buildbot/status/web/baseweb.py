@@ -252,24 +252,21 @@ class WebStatus(service.MultiService):
         @param logRotateLength: file size at which the http.log is rotated/reset.
             If not set, the value set in the buildbot.tac will be used,
              falling back to the BuildMaster's default value (1 Mb).
-        
+
         @type maxRotatedFiles: None or int
         @param maxRotatedFiles: number of old http.log files to keep during log rotation.
             If not set, the value set in the buildbot.tac will be used,
              falling back to the BuildMaster's default value (10 files).
-        
+
         @type  change_hook_dialects: None or dict
         @param change_hook_dialects: If empty, disables change_hook support, otherwise
                                      whitelists valid dialects. In the format of
                                      {"dialect1": "Option1", "dialect2", None}
                                      Where the values are options that will be passed
                                      to the dialect
-                                     
+
                                      To enable the DEFAULT handler, use a key of DEFAULT
-                                     
-                                     
-        
-    
+
         @type  provide_feeds: None or list
         @param provide_feeds: If empty, provides atom, json, and rss feeds.
                               Otherwise, a dictionary of strings of
@@ -370,7 +367,7 @@ class WebStatus(service.MultiService):
         # keep track of cached connections so we can break them when we shut
         # down. See ticket #102 for more details.
         self.channels = weakref.WeakKeyDictionary()
-        
+
         # do we want to allow change_hook
         self.change_hook_dialects = {}
         if change_hook_dialects:
@@ -391,7 +388,6 @@ class WebStatus(service.MultiService):
 
     def setupProtectedResource(self, resource_obj, checkers):
         class SimpleRealm(object):
-
             """
             A realm which gives out L{ChangeHookResource} instances for authenticated
             users.
@@ -456,7 +452,7 @@ class WebStatus(service.MultiService):
                 return a
             else:
                 return b
-        
+
         rotateLength = either(self.logRotateLength, self.master.log_rotation.rotateLength)
         maxRotatedFiles = either(self.maxRotatedFiles, self.master.log_rotation.maxRotatedFiles)
 
@@ -469,9 +465,8 @@ class WebStatus(service.MultiService):
                                         self.repositories, self.projects, self.jinja_loaders)
 
         if not self.site:
-            
-            class RotateLogSite(server.Site):
 
+            class RotateLogSite(server.Site):
                 def _openLogFile(self, path):
                     try:
                         from twisted.python.logfile import LogFile

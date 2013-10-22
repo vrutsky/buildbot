@@ -1494,7 +1494,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             + ExpectShell.log('stdio',
                 stdout='f6ad368298bd941e934a41f3babc827b2aa95a1d')
             + 0,
-            
+
             ## plus this to test describe:
             ExpectShell(workdir='wkdir',
                         command=['git', 'describe', 'HEAD'])
@@ -1513,7 +1513,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
 
         # this tests when 'git describe' fails; for example, there are no
         # tags in the repository
-        
+
         self.setupStep(
                 git.Git(repourl='http://github.com/buildbot/buildbot.git',
                                     mode='incremental',
@@ -1544,7 +1544,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             + ExpectShell.log('stdio',
                 stdout='f6ad368298bd941e934a41f3babc827b2aa95a1d')
             + 0,
-            
+
             ## plus this to test describe:
             ExpectShell(workdir='wkdir',
                         command=['git', 'describe', 'HEAD'])
@@ -1595,7 +1595,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             + ExpectShell.log('stdio',
                 stdout='f6ad368298bd941e934a41f3babc827b2aa95a1d')
             + 0,
-            
+
             ## plus this to test describe:
             ExpectShell(workdir='wkdir',
                         command=['git', 'describe'] +
@@ -1605,7 +1605,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
                 stdout='Tag-1234')
             + 0,
         )
-        
+
         if codebase:
             self.expectOutcome(result=SUCCESS, status_text=["update", codebase])
             self.expectProperty('got_revision', {codebase:'f6ad368298bd941e934a41f3babc827b2aa95a1d'}, 'Git')
@@ -1642,7 +1642,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_tags(self):
         self.setup_getDescription_test(
             setup_args = { 'tags': True },
@@ -1655,7 +1655,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_all(self):
         self.setup_getDescription_test(
             setup_args = { 'all': True },
@@ -1668,7 +1668,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_abbrev(self):
         self.setup_getDescription_test(
             setup_args = { 'abbrev': 7 },
@@ -1687,7 +1687,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_dirty(self):
         self.setup_getDescription_test(
             setup_args = { 'dirty': True },
@@ -1712,7 +1712,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_contains(self):
         self.setup_getDescription_test(
             setup_args = { 'contains': True },
@@ -1725,7 +1725,7 @@ class TestGit(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unittest.Te
             output_args = []
         )
         return self.runStep()
-        
+
     def test_getDescription_candidates(self):
         self.setup_getDescription_test(
             setup_args = { 'candidates': 7 },

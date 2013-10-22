@@ -23,7 +23,6 @@ from buildbot import config, interfaces
 from buildbot.util.state import StateMixin
 
 class BaseScheduler(service.MultiService, ComparableMixin, StateMixin):
-
     """
     Base class for all schedulers; this provides the equipment to manage
     reconfigurations and to handle basic scheduler state.  It also provides
@@ -108,7 +107,7 @@ class BaseScheduler(service.MultiService, ComparableMixin, StateMixin):
             config.error("Codebases cannot be None")
 
         self.codebases = codebases
-        
+
         # internal variables
         self._change_subscription = None
         self._change_consumption_lock = defer.DeferredLock()

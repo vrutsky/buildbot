@@ -72,7 +72,7 @@ class ComparableMixin:
 
     class _None:
         pass
- 
+
     def __hash__(self):
         compare_attrs = []
         reflect.accumulateClassList(self.__class__, 'compare_attrs', compare_attrs)
@@ -149,7 +149,6 @@ except AttributeError:
 # which makes default function keyword arguments hard to handle.  This value
 # is always false.
 class NotABranch:
-
     def __nonzero__(self):
         return False
 NotABranch = NotABranch()
@@ -157,7 +156,6 @@ NotABranch = NotABranch()
 # time-handling methods
 
 class UTC(datetime.tzinfo):
-
     """Simple definition of UTC timezone"""
     def utcoffset(self, dt):
         return datetime.timedelta(0)

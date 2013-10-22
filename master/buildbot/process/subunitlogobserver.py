@@ -22,7 +22,6 @@ from buildbot.status.testresult import TestResult as aTestResult
 from buildbot.status.results import SUCCESS, FAILURE, SKIPPED
 
 class SubunitLogObserver(buildstep.LogLineObserver, TestResult):
-
     """Observe a log that may contain subunit output.
 
     This class extends TestResult to receive the callbacks from the subunit

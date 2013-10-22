@@ -44,7 +44,6 @@ def patch():
 #    the generator when a yielded Deferred fails with a remote PB failure.
 
 class RemoteError(Exception):
-
     def __init__(self, remoteType, value, remoteTraceback):
         Exception.__init__(self, value)
         self.remoteType = remoteType

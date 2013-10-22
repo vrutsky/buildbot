@@ -35,7 +35,6 @@ from buildbot import config
 
 class AbstractBuildSlave(config.ReconfigurableServiceMixin, pb.Avatar,
                         service.MultiService):
-
     """This is the master-side representative for a remote buildbot slave.
     There is exactly one for each slave described in the config file (the
     c['slaves'] list). When buildbots connect in (.attach), they get a
@@ -468,7 +467,7 @@ class AbstractBuildSlave(config.ReconfigurableServiceMixin, pb.Avatar,
             self.slave_status.setConnected(True)
 
             self._applySlaveInfo(state)
-            
+
             self.slave_commands = state.get("slave_commands")
             self.slave_environ = state.get("slave_environ")
             self.slave_basedir = state.get("slave_basedir")
@@ -486,7 +485,7 @@ class AbstractBuildSlave(config.ReconfigurableServiceMixin, pb.Avatar,
             self.botmaster.master.status.slaveConnected(self.slavename)
 
         d.addCallback(lambda _: self._saveSlaveInfoDict())
-        
+
         d.addCallback(lambda _: self.updateSlave())
 
         d.addCallback(lambda _:
@@ -799,7 +798,6 @@ class BuildSlave(AbstractBuildSlave):
         self.maybeShutdown()
 
 class AbstractLatentBuildSlave(AbstractBuildSlave):
-
     """A build slave that will start up a slave instance when needed.
 
     To use, subclass and implement start_instance and stop_instance.

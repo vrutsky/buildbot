@@ -16,7 +16,6 @@
 from twisted.python import failure, log
 
 class SubscriptionPoint(object):
-
     def __init__(self, name):
         self.name = name
         self.subscriptions = set()
@@ -41,7 +40,6 @@ class SubscriptionPoint(object):
         self.subscriptions.remove(subscription)
 
 class Subscription(object):
-
     def __init__(self, subpt, callback):
         self.subpt = subpt
         self.callback = callback

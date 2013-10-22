@@ -43,7 +43,6 @@ from zope.interface import implements # requires Twisted-2.0 or later
 class makeTelnetProtocol:
     # this curries the 'portal' argument into a later call to
     # TelnetTransport()
-
     def __init__(self, portal):
         self.portal = portal
 
@@ -70,16 +69,14 @@ class _TelnetRealm:
 class chainedProtocolFactory:
     # this curries the 'namespace' argument into a later call to
     # chainedProtocolFactory()
-
     def __init__(self, namespace):
         self.namespace = namespace
-    
+
     def __call__(self):
         return insults.ServerProtocol(manhole.ColoredManhole, self.namespace)
 
 if conchc:
     class AuthorizedKeysChecker(conchc.SSHPublicKeyDatabase):
-
         """Accept connections using SSH keys from a given file.
 
         SSHPublicKeyDatabase takes the username that the prospective client has
@@ -110,7 +107,6 @@ if conchc:
 
 
 class _BaseManhole(service.MultiService):
-
     """This provides remote access to a python interpreter (a read/exec/print
     loop) embedded in the buildmaster via an internal SSH server. This allows
     detailed inspection of the buildmaster state. It is of most use to
@@ -191,7 +187,6 @@ class _BaseManhole(service.MultiService):
 
 
 class TelnetManhole(_BaseManhole, ComparableMixin):
-
     """This Manhole accepts unencrypted (telnet) connections, and requires a
     username and password authorize access. You are encouraged to use the
     encrypted ssh-based manhole classes instead."""
@@ -220,7 +215,6 @@ class TelnetManhole(_BaseManhole, ComparableMixin):
         _BaseManhole.__init__(self, port, c, using_ssh=False)
 
 class PasswordManhole(_BaseManhole, ComparableMixin):
-
     """This Manhole accepts encrypted (ssh) connections, and requires a
     username and password to authorize access.
     """
@@ -251,7 +245,6 @@ class PasswordManhole(_BaseManhole, ComparableMixin):
         _BaseManhole.__init__(self, port, c)
 
 class AuthorizedKeysManhole(_BaseManhole, ComparableMixin):
-
     """This Manhole accepts ssh connections, and requires that the
     prospective client have an ssh private key that matches one of the public
     keys in our authorized_keys file. It is created with the name of a file
@@ -283,7 +276,6 @@ class AuthorizedKeysManhole(_BaseManhole, ComparableMixin):
         _BaseManhole.__init__(self, port, c)
 
 class ArbitraryCheckerManhole(_BaseManhole, ComparableMixin):
-
     """This Manhole accepts ssh connections, but uses an arbitrary
     user-supplied 'checker' object to perform authentication."""
 

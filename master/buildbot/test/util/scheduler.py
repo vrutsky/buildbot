@@ -74,7 +74,6 @@ class FakeMaster(object):
 
 
 class SchedulerMixin(object):
-
     """
     This class fakes out enough of a master and the various relevant database
     connectors to test schedulers.  All of the database methods have identical

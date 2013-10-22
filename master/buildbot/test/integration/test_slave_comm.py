@@ -28,13 +28,11 @@ from buildbot.util.eventual import eventually
 from buildbot.test.fake import fakemaster
 
 class FakeSlaveBuilder(pb.Referenceable):
-
     """
     Fake slave-side SlaveBuilder object
     """
 
 class FakeSlaveBuildSlave(pb.Referenceable):
-
     """
     Fake slave-side BuildSlave object
 
@@ -92,7 +90,6 @@ class FakeBuilder(builder.Builder):
 
 
 class TestSlaveComm(unittest.TestCase):
-
     """
     Test handling of connections from slaves as integrated with
      - Twisted Spread

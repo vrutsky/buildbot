@@ -18,7 +18,6 @@ import os, sys, time
 from buildslave.scripts import base
 
 class Follower:
-
     def follow(self):
         from twisted.internet import reactor
         from buildslave.scripts.logwatcher import LogWatcher

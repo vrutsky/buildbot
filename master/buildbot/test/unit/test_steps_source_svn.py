@@ -387,7 +387,7 @@ class TestSVN(sourcesteps.SourceStepMixin, unittest.TestCase):
         self.expectOutcome(result=SUCCESS, status_text=["update"])
         self.expectProperty('got_revision', '100', 'SVN')
         return self.runStep()
-    
+
     def test_mode_incremental_repourl_not_updatable(self):
         self.setupStep(
                 svn.SVN(repourl=ConstantRenderable('http://svn.local/trunk/app'),
@@ -1747,7 +1747,6 @@ def _makeSUCTest(input, exp):
 
 
 class TestGetUnversionedFiles(unittest.TestCase):
-
     def test_getUnversionedFiles_does_not_list_externals(self):
         svn_st_xml = """<?xml version="1.0"?>
         <status>

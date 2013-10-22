@@ -56,14 +56,13 @@ def getResultsClass(results, prevResults, inProgress, inBuilder):
         else:
             # The previous build also failed.
             return "failure-again"
-  
+
     # Any other results? Like EXCEPTION?
     return "exception"
 
 class ANYBRANCH: pass # a flag value, used below
 
 class DevRevision:
-
     """Helper class that contains all the information we need for a revision."""
 
     def __init__(self, change):
@@ -79,7 +78,6 @@ class DevRevision:
 
 
 class DevBuild:
-
     """Helper class that contains all the information we need for a build."""
 
     def __init__(self, build, details):
@@ -94,7 +92,6 @@ class DevBuild:
 
 
 class ConsoleStatusResource(HtmlResource):
-
     """Main console class. It displays a user-oriented status page.
     Every change is a line in the page, and it shows the result of the first
     build with this change for each slave."""
@@ -144,17 +141,17 @@ class ConsoleStatusResource(HtmlResource):
         max_depth defines how many builds we will parse for a given builder.
         max_builds defines how many builds total we want to parse. This is to
             limit the amount of time we spend in this function.
-        
+
         This function is sub-optimal, but the information returned by this
         function is cached, so this function won't be called more than once.
         """
-        
+
         allChanges = list()
         build_count = 0
         for builderName in status.getBuilderNames()[:]:
             if build_count > max_builds:
                 break
-            
+
             builder = status.getBuilder(builderName)
             build = self.getHeadBuild(builder)
             depth = 0
@@ -198,7 +195,7 @@ class ConsoleStatusResource(HtmlResource):
         details = {}
         if not build.getLogs():
             return details
-        
+
         for step in build.getSteps():
             (result, reason) = step.getResults()
             if result == builder.FAILURE:
@@ -207,7 +204,7 @@ class ConsoleStatusResource(HtmlResource):
                 # Remove html tags from the error text.
                 stripHtml = re.compile(r'<.*?>')
                 strippedDetails = stripHtml.sub('', ' '.join(step.getText()))
-                
+
                 details['buildername'] = builderName
                 details['status'] = strippedDetails
                 details['reason'] = reason
@@ -250,14 +247,13 @@ class ConsoleStatusResource(HtmlResource):
 
         return builds
 
-    
     def getAllBuildsForRevision(self, status, request, codebase, lastRevision,
                                 numBuilds, categories, builders, debugInfo):
         """Returns a dictionary of builds we need to inspect to be able to
         display the console page. The key is the builder name, and the value is
         an array of build we care about. We also returns a dictionary of
         builders we care about. The key is it's category.
- 
+
         codebase is the codebase to get revisions from
         lastRevision is the last revision we want to display in the page.
         categories is a list of categories to display. It is coming from the
@@ -321,9 +317,9 @@ class ConsoleStatusResource(HtmlResource):
 
         categories = builderList.keys()
         categories.sort()
-        
+
         cs = []
-        
+
         for category in categories:
             c = {}
 
@@ -334,7 +330,7 @@ class ConsoleStatusResource(HtmlResource):
             # (#Builders in Category) / (#Builders Total) * 100.
             c["size"] = (len(builderList[category]) * 100) / count
             cs.append(c)
-            
+
         return cs
 
     def displaySlaveLine(self, status, builderList, debugInfo):
@@ -408,14 +404,14 @@ class ConsoleStatusResource(HtmlResource):
         # Sort the categories.
         categories = builderList.keys()
         categories.sort()
-        
+
         builds = {}
-  
+
         # Display the boxes by category group.
         for category in categories:
-  
+
             builds[category] = []
-            
+
             # Display the boxes for each builder in this category.
             for builder in builderList[category]:
                 introducedIn = None
@@ -465,7 +461,7 @@ class ConsoleStatusResource(HtmlResource):
 
                 if isRunning:
                     pageTitle += ' ETA: %ds' % (introducedIn.eta or 0)
-                    
+
                 resultsClass = getResultsClass(results, previousResults, isRunning, inBuilder)
 
                 b = {}
@@ -542,7 +538,7 @@ class ConsoleStatusResource(HtmlResource):
         # For each revision we show one line
         for revision in revisions:
             r = {}
-            
+
             # Fill the dictionary with this new information
             r['id'] = revision.revision
             r['link'] = revision.revlink
@@ -676,14 +672,13 @@ class ConsoleStatusResource(HtmlResource):
         return d
 
 class RevisionComparator(object):
-
     """Used for comparing between revisions, as some
     VCS use a plain counter for revisions (like SVN)
     while others use different concepts (see Git).
     """
-    
+
     # TODO (avivby): Should this be a zope interface?
-    
+
     def isRevisionEarlier(self, first_change, second_change):
         """Used for comparing 2 changes"""
         raise NotImplementedError
@@ -694,9 +689,8 @@ class RevisionComparator(object):
 
     def getSortingKey(self):
         raise NotImplementedError
-    
-class TimeRevisionComparator(RevisionComparator):
 
+class TimeRevisionComparator(RevisionComparator):
     def isRevisionEarlier(self, first, second):
         return first.when < second.when
 
@@ -707,7 +701,6 @@ class TimeRevisionComparator(RevisionComparator):
         return operator.attrgetter('when')
 
 class IntegerRevisionComparator(RevisionComparator):
-
     def isRevisionEarlier(self, first, second):
         try:
             return int(first.revision) < int(second.revision)

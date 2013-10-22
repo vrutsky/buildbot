@@ -22,12 +22,10 @@ from buildslave.commands.base import SourceBaseCommand
 from buildslave import runprocess
 
 class MonotoneError(Exception):
-
     """Error class for this module."""
 
 
 class Monotone(SourceBaseCommand):
-
     """Monotone specific VC operation. In addition to the arguments
     handled by SourceBaseCommand, this command reads the following keys:
 
@@ -47,7 +45,7 @@ class Monotone(SourceBaseCommand):
 
         self.repourl = args['repourl']
         self.branch = args['branch']
-        
+
         self.revision = args.get('revision', None)
         self.progress = args.get('progress', False)
 

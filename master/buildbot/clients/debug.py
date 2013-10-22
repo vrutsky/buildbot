@@ -24,7 +24,6 @@ import gtk.glade #@UnresolvedImport
 import re
 
 class DebugWidget:
-
     def __init__(self, master="localhost:8007", passwd="debugpw"):
         self.connected = 0
         try:

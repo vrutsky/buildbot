@@ -32,7 +32,6 @@ class FakeMasterMethods(object):
     # - FileWriter
     # - FileDirectoryWriter
     # - FileReader
-
     def __init__(self, add_update):
         self.add_update = add_update
 
@@ -95,7 +94,7 @@ class FakeMasterMethods(object):
 
     def remote_utime(self,accessed_modified):
         self.add_update('utime - %s' % accessed_modified[0])
-        
+
     def remote_close(self):
         self.add_update('close')
 

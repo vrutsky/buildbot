@@ -28,7 +28,6 @@ class TestGPOMixin(unittest.TestCase):
 
     def runTestMethod(self, method):
         class TestCase(GetProcessOutputMixin, unittest.TestCase):
-
             def setUp(self):
                 self.setUpGetProcessOutput()
             def runTest(self):

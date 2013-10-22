@@ -130,7 +130,6 @@ class LogFileWatcher:
 
 if runtime.platformType == 'posix':
     class ProcGroupProcess(Process):
-
         """Simple subclass of Process to also make the spawned process a process
         group leader, so we can kill all members of the process group."""
 
@@ -205,7 +204,6 @@ class RunProcessPP(protocol.ProcessProtocol):
 
 
 class RunProcess:
-
     """
     This is a helper class, used by slave commands to run programs in a child
     shell.

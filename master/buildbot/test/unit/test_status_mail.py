@@ -29,7 +29,6 @@ py_27 = sys.version_info[0] > 2 or (sys.version_info[0] == 2
                                     and sys.version_info[1] >= 7)
 
 class FakeLog(object):
-
     def __init__(self, text):
         self.text = text
 
@@ -38,7 +37,6 @@ class FakeLog(object):
 
     def getStep(self):
         class FakeStep(object):
-
             def getName(self):
                 return 'step-name'
         return FakeStep()
@@ -47,7 +45,6 @@ class FakeLog(object):
         return self.text
 
 class FakeSource:
-
     def __init__(self, branch = None, revision = None, repository = None,
                  codebase = None, project = None):
         self.changes = []
@@ -194,7 +191,7 @@ class TestMailNotifier(unittest.TestCase):
         build.builder = Mock()
 
         self.assertEqual(None, mn.buildFinished('dummyBuilder', build, SUCCESS))
-        
+
     def test_buildsetFinished_sends_email(self):
         fakeBuildMessage = Mock()
         mn = MailNotifier('from@example.org',
@@ -309,12 +306,12 @@ class TestMailNotifier(unittest.TestCase):
         def fakeCustomMessage(attrs):
             self.passedAttrs = attrs
             return ("", "")
-                                              
+
         mn = MailNotifier('from@example.org',
                           buildSetSummary=True,
                           mode=("failing", "passing", "warnings"),
                           builders=["Builder"])
-        
+
 
         def fakeBuildMessage(name, builds, results):
             for build in builds:
@@ -323,18 +320,18 @@ class TestMailNotifier(unittest.TestCase):
 
         mn.buildMessage = fakeBuildMessage
         mn.customMesg = fakeCustomMessage
-        
+
         def fakeGetBuild(number):
             return build
-        
+
         def fakeGetBuilder(buildername):
             if buildername == builder.name:
                 return builder
             return None
-        
+
         def fakeGetBuildRequests(self, bsid):
             return defer.succeed([{"buildername":"Builder", "brid":1}])
- 
+
         self.db = fakedb.FakeDBConnector(self)
         self.db.insertTestData([fakedb.SourceStampSet(id=127),
                                 fakedb.Buildset(id=99, sourcestampsetid=127,
@@ -349,40 +346,39 @@ class TestMailNotifier(unittest.TestCase):
         builder = Mock()
         builder.getBuild = fakeGetBuild
         builder.name = "Builder"
-        
+
         build = FakeBuildStatus()
         build.results = FAILURE
         build.finished = True
         build.reason = "testReason"
         build.getLogs.return_value = []
         build.getBuilder.return_value = builder
-        
+
         self.status = Mock()
         mn.master_status = Mock()
         mn.master_status.getBuilder = fakeGetBuilder
-            
+
         ss1 = FakeSource(revision='111222', codebase='testlib1')
         ss2 = FakeSource(revision='222333', codebase='testlib2')
         build.getSourceStamps.return_value = [ss1, ss2]
-        
+
         mn.buildsetFinished(99, FAILURE)
 
         self.assertTrue('revision' in self.passedAttrs, "No revision entry found in attrs")
         self.assertTrue(isinstance(self.passedAttrs['revision'], dict))
         self.assertEqual(self.passedAttrs['revision']['testlib1'], '111222')
         self.assertEqual(self.passedAttrs['revision']['testlib2'], '222333')
-        
+
     def test_getCustomMesgData_single_sourcestamp(self):
         self.passedAttrs = {}
         def fakeCustomMessage(attrs):
             self.passedAttrs = attrs
             return ("", "")
-                                              
+
         mn = MailNotifier('from@example.org',
                           buildSetSummary=True,
                           mode=("failing", "passing", "warnings"),
                           builders=["Builder"])
-        
 
         def fakeBuildMessage(name, builds, results):
             for build in builds:
@@ -391,18 +387,18 @@ class TestMailNotifier(unittest.TestCase):
 
         mn.buildMessage = fakeBuildMessage
         mn.customMesg = fakeCustomMessage
-        
+
         def fakeGetBuild(number):
             return build
-        
+
         def fakeGetBuilder(buildername):
             if buildername == builder.name:
                 return builder
             return None
-        
+
         def fakeGetBuildRequests(self, bsid):
             return defer.succeed([{"buildername":"Builder", "brid":1}])
- 
+
         self.db = fakedb.FakeDBConnector(self)
         self.db.insertTestData([fakedb.SourceStampSet(id=127),
                                 fakedb.Buildset(id=99, sourcestampsetid=127,
@@ -417,21 +413,21 @@ class TestMailNotifier(unittest.TestCase):
         builder = Mock()
         builder.getBuild = fakeGetBuild
         builder.name = "Builder"
-        
+
         build = FakeBuildStatus()
         build.results = FAILURE
         build.finished = True
         build.reason = "testReason"
         build.getLogs.return_value = []
         build.getBuilder.return_value = builder
-        
+
         self.status = Mock()
         mn.master_status = Mock()
         mn.master_status.getBuilder = fakeGetBuilder
-            
+
         ss1 = FakeSource(revision='111222', codebase='testlib1')
         build.getSourceStamps.return_value = [ss1]
-        
+
         mn.buildsetFinished(99, FAILURE)
 
         self.assertTrue('builderName' in self.passedAttrs, "No builderName entry found in attrs")
@@ -439,7 +435,7 @@ class TestMailNotifier(unittest.TestCase):
         self.assertTrue('revision' in self.passedAttrs, "No revision entry found in attrs")
         self.assertTrue(isinstance(self.passedAttrs['revision'], str))
         self.assertEqual(self.passedAttrs['revision'], '111222')
-        
+
     def test_buildFinished_ignores_unspecified_categories(self):
         mn = MailNotifier('from@example.org', categories=['fast'])
 

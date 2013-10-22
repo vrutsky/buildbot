@@ -22,7 +22,6 @@ from buildbot.test.util import scheduler
 from buildbot.test.util import config
 
 class NightlyBase(scheduler.SchedulerMixin, unittest.TestCase):
-
     """detailed getNextBuildTime tests"""
 
     OBJECTID = 133

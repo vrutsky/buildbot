@@ -24,7 +24,6 @@ from buildbot import config, interfaces
 from buildbot.test.fake import fakemaster
 
 class TestCleanShutdown(unittest.TestCase):
-
     def setUp(self):
         self.botmaster = BotMaster(mock.Mock())
         self.reactor = mock.Mock()

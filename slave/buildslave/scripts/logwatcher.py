@@ -32,7 +32,6 @@ class BuildSlaveDetectedError(Exception):
     pass
 
 class TailProcess(protocol.ProcessProtocol):
-
     def outReceived(self, data):
         self.lw.dataReceived(data)
     def errReceived(self, data):

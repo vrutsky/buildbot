@@ -23,7 +23,6 @@ class FakeUserManager(manual.UsersBase):
     pass
 
 class TestUserManager(unittest.TestCase):
-
     def setUp(self):
         self.master = mock.Mock()
         self.umm = manager.UserManagerManager(self.master)

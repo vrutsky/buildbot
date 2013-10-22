@@ -20,7 +20,6 @@ from sqlalchemy.pool import NullPool
 from buildbot.db import enginestrategy
 
 class BuildbotEngineStrategy_special_cases(unittest.TestCase):
-
     "Test the special case methods, without actually creating a db"
 
     # used several times below
@@ -170,7 +169,6 @@ class BuildbotEngineStrategy_special_cases(unittest.TestCase):
 
 
 class BuildbotEngineStrategy(unittest.TestCase):
-
     "Test create_engine by creating a sqlite in-memory db"
 
     def test_create_engine(self):

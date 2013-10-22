@@ -16,7 +16,6 @@
 from buildbot.status.web.base import HtmlResource, IBox
 
 class BuildStatusStatusResource(HtmlResource):
-
     def __init__(self, categories=None):
         HtmlResource.__init__(self)
 
@@ -56,7 +55,7 @@ class BuildStatusStatusResource(HtmlResource):
 
         # Display the bottom box with the build number in it.
         ctx['build'] = IBox(build).getBox(request).td(align="center")
-        
+
         template = request.site.buildbot_service.templates.get_template("buildstatus.html")
         data = template.render(**ctx)
 

@@ -17,7 +17,6 @@
 from twisted.spread import pb
 
 class StatusClient(pb.Referenceable):
-
     """To use this, call my .connected method with a RemoteReference to the
     buildmaster's StatusClientPerspective object.
     """

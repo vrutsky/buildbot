@@ -496,7 +496,6 @@ class SetPropertyFromCommand(steps.BuildStepMixin, unittest.TestCase):
         return d
 
 class SetPropertyDeprecation(unittest.TestCase):
-
     """
     Tests for L{shell.SetProperty}
     """
@@ -754,7 +753,6 @@ class WarningCountingShellCommand(steps.BuildStepMixin, unittest.TestCase):
     def test_suppressions_addSuppression(self):
         # call addSuppression "manually" from a subclass
         class MyWCSC(shell.WarningCountingShellCommand):
-
             def start(self):
                 self.addSuppression([('.*', '.*unseen.*', None, None)])
                 return shell.WarningCountingShellCommand.start(self)

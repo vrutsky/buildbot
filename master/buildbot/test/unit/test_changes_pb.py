@@ -135,7 +135,6 @@ class TestPBChangeSource(
 
 
 class TestChangePerspective(unittest.TestCase):
-
     def setUp(self):
         self.added_changes = []
         self.master = mock.Mock()

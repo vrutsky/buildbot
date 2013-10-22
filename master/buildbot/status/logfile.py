@@ -31,7 +31,6 @@ HEADER = interfaces.LOG_CHANNEL_HEADER
 ChunkTypes = ["stdout", "stderr", "header"]
 
 class LogFileScanner(netstrings.NetstringParser):
-
     def __init__(self, chunk_cb, channels=[]):
         self.chunk_cb = chunk_cb
         self.channels = channels
@@ -43,7 +42,6 @@ class LogFileScanner(netstrings.NetstringParser):
             self.chunk_cb((channel, line[1:]))
 
 class LogFileProducer:
-
     """What's the plan?
 
     the LogFile has just one FD, used for both reading and writing.
@@ -176,7 +174,6 @@ class LogFileProducer:
             self.consumer = None
 
 class LogFile:
-
     """
     A LogFile keeps all of its contents on disk, in a non-pickle format to
     which new entries can easily be appended. The file on disk has a name like

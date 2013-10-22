@@ -172,7 +172,7 @@ class StepBox(components.Adapter):
             text = []
         text = text[:]
         logs = self.original.getLogs()
-        
+
         cxt = dict(text=text, logs=[], urls=[], stepinfo=self)
 
         for num in range(len(logs)):
@@ -188,7 +188,7 @@ class StepBox(components.Adapter):
 
         template = req.site.buildbot_service.templates.get_template("box_macros.html")
         text = template.module.step_box(**cxt)
-        
+
         class_ = "BuildStep " + build_get_class(self.original)
         return Box(text, class_=class_)
 components.registerAdapter(StepBox, buildstep.BuildStepStatus, IBox)
@@ -202,7 +202,7 @@ class EventBox(components.Adapter):
         class_ = "Event"
         return Box(text, class_=class_)
 components.registerAdapter(EventBox, builder.Event, IBox)
-        
+
 
 class Spacer:
     implements(interfaces.IStatusEvent)
@@ -317,7 +317,6 @@ class WaterfallHelp(HtmlResource):
 
 
 class ChangeEventSource(object):
-
     "A wrapper around a list of changes to supply the IEventSource interface"
     def __init__(self, changes):
         self.changes = changes
@@ -337,7 +336,6 @@ class ChangeEventSource(object):
             yield change
 
 class WaterfallStatusResource(HtmlResource):
-
     """This builds the main status page, with the waterfall display, and
     all child pages."""
 
@@ -470,10 +468,10 @@ class WaterfallStatusResource(HtmlResource):
         failuresOnly = request.args.get("failures_only", ["false"])[0]
         if failuresOnly.lower() == "true":
             builders = [b for b in builders if not self.isSuccess(b)]
-        
+
         (changeNames, builderNames, timestamps, eventGrid, sourceEvents) = \
                       self.buildGrid(request, builders, changes)
-            
+
         # start the table: top-header material
         locale_enc = locale.getdefaultlocale()[1]
         if locale_enc is not None:
@@ -482,9 +480,9 @@ class WaterfallStatusResource(HtmlResource):
             locale_tz = unicode(time.tzname[time.localtime()[-1]])
         ctx['tz'] = locale_tz
         ctx['changes_url'] = request.childLink("../changes")
-        
+
         bn = ctx['builders'] = []
-                
+
         for name in builderNames:
             builder = status.getBuilder(name)
             top_box = ITopBox(builder).getBox(request)
@@ -541,7 +539,7 @@ class WaterfallStatusResource(HtmlResource):
         template = request.site.buildbot_service.templates.get_template("waterfall.html")
         data = template.render(**ctx)
         return data
-    
+
     def buildGrid(self, request, builders, changes):
         debug = False
         # TODO: see if we can use a cached copy
@@ -688,21 +686,20 @@ class WaterfallStatusResource(HtmlResource):
 
             if len(timestamps) > maxPageLen:
                 break
-            
-            
+
             # now loop
-            
+
         # loop is finished. now we have eventGrid[] and timestamps[]
         if debugGather: log.msg("finished loop")
         assert(len(timestamps) == len(eventGrid))
         return (changeNames, builderNames, timestamps, eventGrid, sourceEvents)
-    
+
     def phase2(self, request, sourceNames, timestamps, eventGrid,
                sourceEvents):
 
         if not timestamps:
             return dict(grid=[], gridlen=0)
-        
+
         # first pass: figure out the height of the chunks, populate grid
         grid = []
         for i in range(1+len(sourceNames)):

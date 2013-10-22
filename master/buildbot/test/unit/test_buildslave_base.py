@@ -269,7 +269,6 @@ class TestAbstractBuildSlave(unittest.TestCase):
 
     def createRemoteBot(self):
         class Bot():
-
             def __init__(self):
                 self.commands = []
                 self.response = {
@@ -282,7 +281,7 @@ class TestAbstractBuildSlave(unittest.TestCase):
                 if response:
                     return response(*args)
                 return defer.succeed(None)
-        
+
         return Bot()
 
     @defer.inlineCallbacks
@@ -418,7 +417,7 @@ class TestAbstractBuildSlave(unittest.TestCase):
 
         # and the db is updated too:
         buildslave = yield self.master.db.buildslaves.getBuildslaveByName("bot")
-        
+
         self.assertEqual(buildslave['slaveinfo']['admin'], 'TheAdmin')
         self.assertEqual(buildslave['slaveinfo']['host'], 'TheHost')
         self.assertEqual(buildslave['slaveinfo']['access_uri'], 'TheURI')

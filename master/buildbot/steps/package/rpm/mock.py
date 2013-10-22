@@ -37,7 +37,6 @@ class MockStateObserver(buildstep.LogLineObserver):
             self.step.step_status.setText(self.step.describe(False))
 
 class Mock(ShellCommand):
-
     """Add the mock logfiles and clean them if they already exist. Add support
     for the root and resultdir parameter of mock."""
 
@@ -102,11 +101,10 @@ class Mock(ShellCommand):
         d.addErrback(self.failed)
 
 class MockBuildSRPM(Mock):
-
     """Build a srpm within a mock. Requires a spec file and a sources dir."""
-    
+
     name = "mockbuildsrpm"
-    
+
     description = ["mock buildsrpm"]
     descriptionDone = ["mock buildsrpm"]
 
@@ -119,7 +117,7 @@ class MockBuildSRPM(Mock):
                  **kwargs):
         """
         Creates the MockBuildSRPM object.
-        
+
         @type spec: str
         @param spec: the path of the specfiles.
         @type sources: str
@@ -148,20 +146,19 @@ class MockBuildSRPM(Mock):
             self.setProperty("srpm", m.group(1), 'MockBuildSRPM')
 
 class MockRebuild(Mock):
-
     """Rebuild a srpm within a mock. Requires a srpm file."""
-    
+
     name = "mock"
-    
+
     description = ["mock rebuilding srpm"]
     descriptionDone = ["mock rebuild srpm"]
-    
+
     srpm = None
 
     def __init__(self, srpm=None, **kwargs):
         """
         Creates the MockRebuildRPM object.
-        
+
         @type srpm: str
         @param srpm: the path of the srpm file.
         @type kwargs: dict
@@ -173,5 +170,5 @@ class MockRebuild(Mock):
 
         if not self.srpm:
             config.error("You must specify a srpm")
-        
+
         self.command += ['--rebuild', self.srpm]

@@ -318,7 +318,6 @@ class BasicBuildChooser(BuildChooserBase):
 
 
 class BuildRequestDistributor(service.Service):
-
     """
     Special-purpose class to handle distributing build requests to builders by
     calling their C{maybeStartBuild} method.

@@ -78,7 +78,7 @@ class TestMonotone(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unitte
         self.expectOutcome(result=SUCCESS, status_text=["update"])
         self.expectProperty('got_revision', '95215e2a9a9f8b6f5c9664e3807cd34617ea928c', 'Monotone')
         return self.runStep()
-                         
+
     def test_mode_full_clean_patch(self):
         self.setupStep(
             mtn.Monotone(repourl='mtn://localhost/monotone',
@@ -208,7 +208,7 @@ class TestMonotone(sourcesteps.SourceStepMixin, config.ConfigErrorsMixin, unitte
             )
         self.expectOutcome(result=FAILURE, status_text=["updating"])
         return self.runStep()
-        
+
     def test_mode_full_clean_no_existing_repo(self):
         self.setupStep(
             mtn.Monotone(repourl='mtn://localhost/monotone',

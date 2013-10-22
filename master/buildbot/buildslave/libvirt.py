@@ -31,7 +31,6 @@ except ImportError:
 
 
 class WorkQueue(object):
-
     """
     I am a class that turns parallel access into serial access.
 

@@ -52,7 +52,7 @@ class StatusResourceBuildStep(HtmlResource):
             statistics.append({'name': stat, 'value': stepStatistics[stat]})
 
         start, end = s.getTimes()
-        
+
         if start:
             cxt['start'] = ctime(start)
             if end:
@@ -61,13 +61,13 @@ class StatusResourceBuildStep(HtmlResource):
             else:
                 cxt['end'] = "Not Finished"
                 cxt['elapsed'] = util.formatInterval(util.now() - start)
-                
+
         cxt.update(dict(builder_link = path_to_builder(req, b.getBuilder()),
                         build_link = path_to_build(req, b),
                         b = b,
                         s = s,
                         result_css = css_classes[s.getResults()[0]]))
-        
+
         template = req.site.buildbot_service.templates.get_template("buildstep.html");
         return template.render(**cxt)
 

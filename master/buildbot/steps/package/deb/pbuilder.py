@@ -29,7 +29,6 @@ from buildbot.process.buildstep import FAILURE
 from buildbot import config
 
 class DebPbuilder(WarningCountingShellCommand):
-
     """Build a debian package with pbuilder inside of a chroot."""
     name = "pbuilder"
 
@@ -188,7 +187,6 @@ class DebPbuilder(WarningCountingShellCommand):
             self.setProperty("deb-changes", m.group(1), "DebPbuilder")
 
 class DebCowbuilder(DebPbuilder):
-
     """Build a debian package with cowbuilder inside of a chroot."""
     name = "cowbuilder"
 
@@ -201,7 +199,6 @@ class DebCowbuilder(DebPbuilder):
     baseOption = '--basepath'
 
 class UbuPbuilder(DebPbuilder):
-
     """Build a Ubuntu package with pbuilder inside of a chroot."""
     distribution = None
     mirror = "http://archive.ubuntu.com/ubuntu/"
@@ -209,7 +206,6 @@ class UbuPbuilder(DebPbuilder):
     components = "main universe"
 
 class UbuCowbuilder(DebCowbuilder):
-
     """Build a Ubuntu package with cowbuilder inside of a chroot."""
     distribution = None
     mirror = "http://archive.ubuntu.com/ubuntu/"

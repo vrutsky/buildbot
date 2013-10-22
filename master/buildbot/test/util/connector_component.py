@@ -21,7 +21,6 @@ class FakeDBConnector(object):
     pass
 
 class ConnectorComponentMixin(db.RealDatabaseMixin):
-
     """
     Implements a mock DBConnector object, replete with a thread pool and a DB
     model.  This includes a RealDatabaseMixin, so subclasses should not

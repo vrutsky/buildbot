@@ -22,7 +22,6 @@ from buildslave.test.util import misc
 class TestRestart(misc.IsBuildslaveDirMixin,
                   misc.StdoutAssertionsMixin,
                   unittest.TestCase):
-
     """
     Test buildslave.scripts.restart.restart()
     """

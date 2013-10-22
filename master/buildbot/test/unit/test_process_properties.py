@@ -29,7 +29,6 @@ from buildbot.test.util.properties import ConstantRenderable
 from buildbot.test.util import compat
 
 class FakeSource:
-
     def __init__(self):
         self.branch = None
         self.codebase = ''
@@ -56,7 +55,6 @@ class DeferredRenderable:
         self.d.callback(value)
 
 class TestPropertyMap(unittest.TestCase):
-
     """
     Test the behavior of PropertyMap, using the external interace
     provided by WithProperties.
@@ -264,7 +262,6 @@ class TestPropertyMap(unittest.TestCase):
 
 
 class TestInterpolateConfigure(unittest.TestCase, ConfigErrorsMixin):
-
     """
     Test that Interpolate reports erros in the interpolation string
     at configure time.
@@ -324,7 +321,6 @@ class TestInterpolateConfigure(unittest.TestCase, ConfigErrorsMixin):
 
 
 class TestInterpolatePositional(unittest.TestCase):
-
     def setUp(self):
         self.props = Properties()
         self.build = FakeBuild(self.props)
@@ -361,7 +357,6 @@ class TestInterpolatePositional(unittest.TestCase):
 
 
 class TestInterpolateProperties(unittest.TestCase):
-
     def setUp(self):
         self.props = Properties()
         self.build = FakeBuild(self.props)
@@ -507,24 +502,23 @@ class TestInterpolateProperties(unittest.TestCase):
 
 
 class TestInterpolateSrc(unittest.TestCase):
-
     def setUp(self):
         self.props = Properties()
         self.build = FakeBuild(self.props)
         sa = FakeSource()
         sb = FakeSource()
         sc = FakeSource()
-        
+
         sa.repository = 'cvs://A..'
         sa.codebase = 'cbA'
         sa.project = "Project"
         self.build.sources['cbA'] = sa
-        
+
         sb.repository = 'cvs://B..'
         sb.codebase = 'cbB'
         sb.project = "Project"
         self.build.sources['cbB'] = sb
-        
+
         sc.repository = 'cvs://C..'
         sc.codebase = 'cbC'
         sc.project = None
@@ -630,7 +624,6 @@ class TestInterpolateSrc(unittest.TestCase):
 
 
 class TestInterpolateKwargs(unittest.TestCase):
-
     def setUp(self):
         self.props = Properties()
         self.build = FakeBuild(self.props)
@@ -897,7 +890,6 @@ class TestWithProperties(unittest.TestCase):
         return d
 
 class TestProperties(unittest.TestCase):
-
     def setUp(self):
         self.props = Properties()
 
@@ -1194,7 +1186,6 @@ class TestProperty(unittest.TestCase):
 
 
 class TestRenderalbeAdapters(unittest.TestCase):
-
     """
     Tests for list, tuple and dict renderers.
     """

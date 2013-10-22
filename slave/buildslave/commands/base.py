@@ -201,7 +201,6 @@ class Command:
         return None
 
 class SourceBaseCommand(Command):
-
     """Abstract base class for Version Control System operations (checkout
     and update). This class extracts the following arguments from the
     dictionary received from the master:
@@ -595,7 +594,7 @@ class SourceBaseCommand(Command):
                          usePTY=False)
         self.command = c
         d = c.start()
-        
+
         # clean up the temp file
         def cleanup(x):
             try:

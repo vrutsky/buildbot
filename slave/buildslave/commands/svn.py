@@ -25,7 +25,6 @@ from buildslave.commands import utils
 from buildslave.util import Obfuscated
 
 class SVN(SourceBaseCommand):
-
     """Subversion-specific VC operation. In addition to the arguments
     handled by SourceBaseCommand, this command reads the following keys:
 

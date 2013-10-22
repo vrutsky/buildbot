@@ -21,11 +21,10 @@ from buildbot.steps.shell import Test
 
 
 class RpmLint(Test):
-
     """
     Rpmlint build step.
     """
-    
+
     name = "rpmlint"
 
     description = ["Checking for RPM/SPEC issues"]

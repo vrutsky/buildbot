@@ -29,7 +29,6 @@ from buildbot import version, util
 from buildbot.process.properties import Properties
 
 class ITopBox(Interface):
-
     """I represent a box in the top row of the waterfall display: the one
     which shows the status of the last build for each builder."""
     def getBox(self, request):
@@ -37,14 +36,12 @@ class ITopBox(Interface):
         """
 
 class ICurrentBox(Interface):
-
     """I represent the 'current activity' box, just above the builder name."""
     def getBox(self, status):
         """Return a Box instance, which can produce a <td> cell.
         """
 
 class IBox(Interface):
-
     """I represent a box in the waterfall display."""
     def getBox(self, request):
         """Return a Box instance, which wraps an Event and can produce a <td>
@@ -191,7 +188,6 @@ class Box:
 
 
 class AccessorMixin(object):
-
     def getStatus(self, request):
         return request.site.buildbot_service.getStatus()
 
@@ -206,7 +202,6 @@ class AccessorMixin(object):
 
 
 class ContextMixin(AccessorMixin):
-
     def getContext(self, request):
         status = self.getStatus(request)
         rootpath = path_to_root(request)
@@ -233,7 +228,6 @@ class ContextMixin(AccessorMixin):
 
 
 class ActionResource(resource.Resource, AccessorMixin):
-
     """A resource that performs some action, then redirects to a new URL."""
 
     isLeaf = 1
@@ -384,7 +378,6 @@ class HtmlResource(resource.Resource, ContextMixin):
         return server.NOT_DONE_YET
 
 class StaticHTML(HtmlResource):
-
     def __init__(self, body, pageTitle):
         HtmlResource.__init__(self)
         self.bodyHTML = body
@@ -396,7 +389,6 @@ class StaticHTML(HtmlResource):
         return template.render(**cxt)
 
 class DirectoryLister(static.DirectoryLister, ContextMixin):
-
     """This variant of the static.DirectoryLister uses a template
     for rendering."""
 
@@ -423,7 +415,6 @@ class DirectoryLister(static.DirectoryLister, ContextMixin):
         return data
 
 class StaticFile(static.File):
-
     """This class adds support for templated directory
     views."""
 
@@ -474,7 +465,7 @@ class BuildLineMixin:
                 'codebase': '',
                 'rev': 'unknown'
             }]
-        
+
         if len(ss_list)==1:
             return [{
                 'repo': ss_list[0].repository,
@@ -523,7 +514,7 @@ class BuildLineMixin:
         builder_name = build.getBuilder().getName()
         results = build.getResults()
         css_class = css_classes.get(results, "")
-        
+
         rev_list = self.get_rev_list(build)
 
         values = {'class': css_class,
@@ -861,7 +852,6 @@ def dictlinkfilter(links):
     return filter
 
 class AlmostStrictUndefined(jinja2.StrictUndefined):
-
     ''' An undefined that allows boolean testing but
         fails properly on every other use.
 

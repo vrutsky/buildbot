@@ -25,7 +25,6 @@ from buildbot.steps.transfer import _FileReader
 from buildbot.process import buildstep
 
 class Source(LoggingBuildStep, CompositeStepMixin):
-
     """This is a base class to generate a source tree in the buildslave.
     Each version control system has a specialized subclass, and is expected
     to override __init__ and implement computeSourceRevision() and
@@ -233,7 +232,7 @@ class Source(LoggingBuildStep, CompositeStepMixin):
                 if cmd.didFail():
                     raise buildstep.BuildStepFailed()
                 return cmd.rc
-                
+
             d.addCallback(evaluateCommand)
             return d
 
@@ -254,7 +253,7 @@ class Source(LoggingBuildStep, CompositeStepMixin):
     def sourcedirIsPatched(self):
         d = self.pathExists(self.build.path_module.join(self.workdir, '.buildbot-patched'))
         return d
-        
+
     def start(self):
         if self.notReally:
             log.msg("faking %s checkout/update" % self.name)

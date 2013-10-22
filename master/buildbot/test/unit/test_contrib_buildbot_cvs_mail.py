@@ -54,7 +54,7 @@ golden_1_11_regex=[
     '^two files checkin',
     '^$',
     '^$']
-    
+
 golden_1_12_regex=[
     '^From: ',
     '^To: buildbot@example.com$',
@@ -81,7 +81,6 @@ golden_1_12_regex=[
     '^$' ]
 
 class _SubprocessProtocol(protocol.ProcessProtocol):
-
     def __init__(self, input, deferred):
         self.input = input
         self.deferred = deferred
@@ -157,7 +156,7 @@ class TestBuildbotCvsMail(unittest.TestCase):
             self.assertEqual(code, 2)
         d.addCallback(check)
         return d
-        
+
     def test_buildbot_cvs_mail_without_email_opt_exits_with_error(self):
         d = utils.getProcessOutputAndValue(sys.executable, [ self.buildbot_cvs_mail_path,
                                 '--cvsroot=\"ext:example.com:/cvsroot\"',

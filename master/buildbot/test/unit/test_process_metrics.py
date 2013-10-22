@@ -20,7 +20,6 @@ from buildbot.process import metrics
 from buildbot.test.fake import fakemaster
 
 class TestMetricBase(unittest.TestCase):
-
     def setUp(self):
         self.clock = task.Clock()
         self.observer = metrics.MetricLogObserver()
@@ -36,7 +35,6 @@ class TestMetricBase(unittest.TestCase):
             self.observer.stopService()
 
 class TestMetricCountEvent(TestMetricBase):
-
     def testIncrement(self):
         metrics.MetricCountEvent.log('num_widgets', 1)
         report = self.observer.asDict()
@@ -71,7 +69,6 @@ class TestMetricCountEvent(TestMetricBase):
         self.assertEquals(report['counters']['foo_called'], 10)
 
 class TestMetricTimeEvent(TestMetricBase):
-
     def testManualEvent(self):
         metrics.MetricTimeEvent.log('foo_time', 0.001)
         report = self.observer.asDict()
@@ -127,7 +124,6 @@ class TestMetricTimeEvent(TestMetricBase):
         self.assertEquals(report['timers']['foo_time'], sum(data)/float(len(data)))
 
 class TestPeriodicChecks(TestMetricBase):
-
     def testPeriodicCheck(self):
         # fake out that there's no garbage (since we can't rely on Python
         # not having any garbage while running tests)
@@ -163,7 +159,6 @@ class TestPeriodicChecks(TestMetricBase):
         testGetRSS.skip = "only available on linux2 platforms"
 
 class TestReconfig(TestMetricBase):
-
     def testReconfig(self):
         observer = self.observer
         new_config = self.master.config
@@ -209,7 +204,6 @@ class TestReconfig(TestMetricBase):
         # (service will be stopped by tearDown)
 
 class _LogObserver:
-
     def __init__(self):
         self.events = []
 
@@ -217,7 +211,6 @@ class _LogObserver:
         self.events.append(event)
 
 class TestReports(unittest.TestCase):
-
     def testMetricCountReport(self):
         handler = metrics.MetricCountHandler(None)
         handler.handle({}, metrics.MetricCountEvent('num_foo', 1))

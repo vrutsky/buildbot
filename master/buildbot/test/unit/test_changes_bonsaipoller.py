@@ -155,7 +155,6 @@ noCheckinMsgRef = [dict(filename="first/file.ext",
                      revision="1.3")]
 
 class TestBonsaiParser(unittest.TestCase):
-
     def testFullyFormedResult(self):
         br = BonsaiParser(goodUnparsedResult)
         result = br.getData()
@@ -221,7 +220,6 @@ class TestBonsaiParser(unittest.TestCase):
             self.failUnlessEqual(file.revision, ref['revision'])
 
 class TestBonsaiPoller(changesource.ChangeSourceMixin, unittest.TestCase):
-
     def setUp(self):
         d = self.setUpChangeSource()
         def create_poller(_):

@@ -258,7 +258,7 @@ class TestMercurial(sourcesteps.SourceStepMixin, unittest.TestCase):
         )
         self.expectOutcome(result=SUCCESS, status_text=["update"])
         return self.runStep()
-    
+
     def test_mode_full_clean_patch_fail(self):
         self.setupStep(
                 mercurial.Mercurial(repourl='http://hg.mozilla.org',
@@ -750,7 +750,7 @@ class TestMercurial(sourcesteps.SourceStepMixin, unittest.TestCase):
             )
         self.expectOutcome(result=SUCCESS, status_text=["update"])
         return self.runStep()
-    
+
     def test_mode_incremental_existing_repo_added_files_old_rmdir(self):
         self.setupStep(
                 mercurial.Mercurial(repourl='http://hg.mozilla.org',

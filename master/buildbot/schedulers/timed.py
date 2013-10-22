@@ -34,7 +34,6 @@ except ImportError:
     pass
 
 class Timed(base.BaseScheduler):
-
     """
     Parent class for timed schedulers.  This takes care of the (surprisingly
     subtle) mechanics of ensuring that each timed actuation runs to completion
@@ -274,7 +273,6 @@ class Nightly(NightlyBase):
                'change_filter', 'onlyImportant',)
 
     class NoBranch: pass
-
     def __init__(self, name, builderNames, minute=0, hour='*',
                  dayOfMonth='*', month='*', dayOfWeek='*',
                  branch=NoBranch, fileIsImportant=None, onlyIfChanged=False,
@@ -319,7 +317,7 @@ class Nightly(NightlyBase):
             return defer.succeed(None) # don't care about this change
         return self.master.db.schedulers.classifyChanges(
                 self.objectid, { change.number : important })
-    
+
     @defer.inlineCallbacks
     def startBuild(self):
         scheds = self.master.db.schedulers

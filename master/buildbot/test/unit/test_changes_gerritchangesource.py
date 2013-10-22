@@ -20,7 +20,6 @@ from buildbot.changes import gerritchangesource
 
 class TestGerritChangeSource(changesource.ChangeSourceMixin,
                              unittest.TestCase):
-
     def setUp(self):
         return self.setUpChangeSource()
 

@@ -87,7 +87,7 @@ class OneBuildSlaveResource(HtmlResource, BuildLineMixin):
     def content(self, request, ctx):
         s = self.getStatus(request)
         slave = s.getSlave(self.slavename)
-        
+
         my_builders = []
         for bname in s.getBuilderNames():
             b = s.getBuilder(bname)
@@ -106,7 +106,7 @@ class OneBuildSlaveResource(HtmlResource, BuildLineMixin):
             max_builds = int(request.args.get('numbuilds')[0])
         except:
             max_builds = 10
-           
+
         recent_builds = []
         n = 0
         for rb in s.generateFinishedBuilds(builders=[b.getName() for b in my_builders]):
@@ -178,12 +178,12 @@ class BuildSlavesResource(HtmlResource):
                 info['builders'] = []
                 for b in used_by_builder.get(name, []):
                     info['builders'].append(dict(link=request.childLink("../builders/%s" % b), name=b))
-                                        
+
             info['version'] = slave.getVersion()
             info['connected'] = slave.isConnected()
             info['connectCount'] = slave.getConnectCount()
             info['paused'] = slave.isPaused()
-            
+
             info['admin'] = slave.getAdmin() or u''
             last = slave.lastMessageReceived()
             if last:

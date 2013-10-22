@@ -32,9 +32,8 @@ class FakeChange:
     def __init__(self, number = None):
         self.number = number
         self.who = "me"
-        
-class FakeSource:
 
+class FakeSource:
     def __init__(self):
         self.sourcestampsetid = None
         self.changes = []
@@ -50,7 +49,6 @@ class FakeSource:
         return self.repository
 
 class FakeRequest:
-
     def __init__(self):
         self.sources = []
         self.reason = "Because"
@@ -63,7 +61,6 @@ class FakeRequest:
         return self.reason
 
 class FakeBuildStep:
-
     def __init__(self):
         self.haltOnFailure = False
         self.flunkOnWarnings = False
@@ -74,12 +71,11 @@ class FakeBuildStep:
         self.name = 'fake'
 
 class FakeMaster:
-
     def __init__(self):
         self.locks = {}
         self.parent = Mock()
         self.config = config.MasterConfig()
-        
+
     def getLockByID(self, lockid):
         if not lockid in self.locks:
             self.locks[lockid] = lockid.lockClass(lockid)
@@ -87,12 +83,11 @@ class FakeMaster:
 
 class FakeBuildStatus(Mock):
     implements(interfaces.IProperties)
-        
+
 class FakeBuilderStatus:
     implements(interfaces.IBuilderStatus)
 
 class FakeStepFactory(object):
-
     """Fake step factory that just returns a fixed step object."""
     implements(interfaces.IBuildStepFactory)
     def __init__(self, step):
@@ -644,7 +639,7 @@ class TestMultipleSourceStamps(unittest.TestCase):
         s3.changes = [FakeChange(14),FakeChange(15)]
         s3.revision = "111213"
         r.sources.extend([s1,s2,s3])
-        
+
         self.build = Build([r])
 
     def test_buildReturnSourceStamp(self):
@@ -665,7 +660,7 @@ class TestMultipleSourceStamps(unittest.TestCase):
         source3 = self.build.getSourceStamp(codebase)
         self.assertTrue(source3 is not None)
         self.assertEqual( [source3.repository, source3.revision], ["repoC", "111213"])
-        
+
 
 class TestBuildBlameList(unittest.TestCase):
 
@@ -706,7 +701,6 @@ class TestBuildBlameList(unittest.TestCase):
         self.assertEqual(blamelist, ['jeff'])
 
 class TestSetupProperties_MultipleSources(unittest.TestCase):
-
     """
     Test that the property values, based on the available requests, are
     initialized properly
@@ -740,7 +734,7 @@ class TestSetupProperties_MultipleSources(unittest.TestCase):
         if not self.props[s]:
             self.props[s] = {}
         self.props[s][n] = v
-        
+
     def test_sourcestamp_properties_not_set(self):
         self.build.setupProperties()
         self.assertTrue("codebase" not in self.props["Build"])
@@ -750,7 +744,6 @@ class TestSetupProperties_MultipleSources(unittest.TestCase):
         self.assertTrue("repository" not in self.props["Build"])
 
 class TestSetupProperties_SingleSource(unittest.TestCase):
-
     """
     Test that the property values, based on the available requests, are
     initialized properly
@@ -784,17 +777,17 @@ class TestSetupProperties_SingleSource(unittest.TestCase):
         self.build.setupProperties()
         codebase = self.props["Build"]["codebase"]
         self.assertEqual(codebase, "A")
-        
+
     def test_properties_repository(self):
         self.build.setupProperties()
         repository = self.props["Build"]["repository"]
         self.assertEqual(repository, "http://svn-repo-A")
-        
+
     def test_properties_revision(self):
         self.build.setupProperties()
         revision = self.props["Build"]["revision"]
         self.assertEqual(revision, "12345")
-        
+
     def test_properties_branch(self):
         self.build.setupProperties()
         branch = self.props["Build"]["branch"]
@@ -804,9 +797,8 @@ class TestSetupProperties_SingleSource(unittest.TestCase):
         self.build.setupProperties()
         project = self.props["Build"]["project"]
         self.assertEqual(project, '')
-        
-class TestBuildProperties(unittest.TestCase):
 
+class TestBuildProperties(unittest.TestCase):
     """
     Test that a Build has the necessary L{IProperties} methods, and that they
     properly delegate to the C{build_status} attribute - so really just a test

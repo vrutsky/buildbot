@@ -32,7 +32,6 @@ def deferredLocked(lock_or_attr):
     return decorator
 
 class SerializedInvocation(object):
-
     def __init__(self, method):
         self.method = method
         self.running = False

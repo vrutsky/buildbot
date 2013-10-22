@@ -19,7 +19,6 @@ from buildbot.status.web.session import SessionManager
 
 COOKIE_KEY="BuildBotSession"
 class Authz(object):
-
     """Decide who can do what."""
 
     knownActions = [
@@ -70,7 +69,7 @@ class Authz(object):
             cookie = request.received_cookies[COOKIE_KEY]
             return self.sessions.get(cookie)
         return None
-            
+
     def authenticated(self, request):
         if self.useHttpHeader:
             return request.getUser() != ''

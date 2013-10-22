@@ -19,7 +19,6 @@ from buildslave.commands import base
 from buildslave import runprocess
 
 class SlaveShellCommand(base.Command):
-
     def start(self):
         args = self.args
         # args['workdir'] is relative to Builder directory, and is required.

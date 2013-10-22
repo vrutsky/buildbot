@@ -22,7 +22,6 @@ from collections import defaultdict
 
 
 class LRUCache(object):
-
     """
     A least-recently-used cache, with a fixed maximum size.
 
@@ -165,7 +164,6 @@ class LRUCache(object):
 
 
 class AsyncLRUCache(LRUCache):
-
     """
     An LRU cache with asynchronous locking to ensure that in the common case of
     multiple concurrent requests for the same key, only one fetch is performed.

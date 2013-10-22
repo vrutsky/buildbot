@@ -25,7 +25,6 @@ from buildbot.test.util import dirs
 from buildbot import config
 
 class TestLogFileProducer(unittest.TestCase):
-
     def make_static_logfile(self, contents):
         "make a fake logfile with the given contents"
         lf = mock.Mock()

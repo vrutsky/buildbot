@@ -21,7 +21,6 @@ from buildbot import interfaces, config, util
 from buildbot.process import metrics
 
 class ChangeManager(config.ReconfigurableServiceMixin, service.MultiService):
-
     """
     This is the master-side service which receives file change notifications
     from version-control systems.

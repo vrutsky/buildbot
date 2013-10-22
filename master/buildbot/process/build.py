@@ -31,7 +31,6 @@ from buildbot.util.eventual import eventually
 
 
 class Build(properties.PropertiesMixin):
-
     """I represent a single build by a single slave. Specialized Builders can
     use subclasses of Build to hold status information unique to those build
     processes.
@@ -176,7 +175,7 @@ class Build(properties.PropertiesMixin):
         # now set some properties of our own, corresponding to the
         # build itself
         props.setProperty("buildnumber", self.build_status.number, "Build")
-        
+
         if self.sources and len(self.sources) == 1:
             # old interface for backwards compatibility
             source = self.sources[0]

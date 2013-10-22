@@ -23,7 +23,6 @@ from buildslave.commands.base import AbandonChain
 
 
 class Git(SourceBaseCommand):
-
     """Git specific VC operation. In addition to the arguments
     handled by SourceBaseCommand, this command reads the following keys:
 
@@ -110,7 +109,7 @@ class Git(SourceBaseCommand):
         # For further information about this, see the commit message
         command = ['branch', '-M', self.branch]
         return self._dovccmd(command, self._initSubmodules, False)
-        
+
     def _didFetch(self, res):
         if self.revision:
             head = self.revision

@@ -166,14 +166,14 @@ class TestBuilderBuildCreation(unittest.TestCase):
         ss2 = sourcestamp.SourceStamp(branch='dev', revision='xyz',
                 project='p', repository='r', codebase='cb', changes=[])
         self.assertFalse(ss1.canBeMergedWith(ss2))
-        
+
     def test_canBeMergedWith_where_sourcestamp_have_different_codebases(self):
         ss1 = sourcestamp.SourceStamp(branch='dev', revision='xyz',
                 project='p', repository='r', codebase='cbA', changes=[])
         ss2 = sourcestamp.SourceStamp(branch='dev', revision='xyz',
                 project='p', repository='r', codebase='cbB', changes=[])
         self.assertFalse(ss1.canBeMergedWith(ss2))
-        
+
     def test_canBeMergedWith_with_self_patched_sourcestamps(self):
         ss = sourcestamp.SourceStamp(branch='dev', revision='xyz',
                 project='p', repository='r', codebase='cbA', changes=[],

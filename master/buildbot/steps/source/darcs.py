@@ -28,7 +28,6 @@ from buildbot.status.results import SUCCESS
 from buildbot.steps.transfer import _FileReader
 
 class Darcs(Source):
-
     """ Class for Darcs with all smarts """
 
     name = 'darcs'
@@ -50,7 +49,7 @@ class Darcs(Source):
             errors.append("mode %s is not one of %s" % (self.mode, self.possible_modes))
         if self.mode == 'incremental' and self.method:
             errors.append("Incremental mode does not require method")
-        
+
         if self.mode == 'full':
             if self.method == None:
                 self.method = 'copy'
@@ -170,7 +169,7 @@ class Darcs(Source):
                                               wkdir='.'))
 
         return d
-        
+
     def _checkout(self):
 
         if self.retry:
@@ -261,6 +260,6 @@ class Darcs(Source):
             if cmd.didFail():
                 raise buildstep.BuildStepFailed()
             return cmd.rc
-                
+
         d.addCallback(evaluateCommand)
         return d

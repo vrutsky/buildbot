@@ -28,7 +28,6 @@ from buildbot import interfaces, util
 from buildbot.process.properties import Properties
 
 class Change:
-
     """I represent a single change to the source tree. This may involve several
     files, but they are all changed by the same person, and there is a change
     comment for the group as a whole."""
@@ -153,7 +152,7 @@ class Change:
         data += "At: %s\n" % self.getTime()
         data += "Changed By: %s\n" % self.who
         data += "Comments: %s" % self.comments
-        data += "Properties: \n%s\n\n" % self.getProperties()
+        data += "Properties:\n%s\n\n" % self.getProperties()
         return data
 
     def asDict(self):

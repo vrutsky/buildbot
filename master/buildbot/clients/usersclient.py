@@ -21,7 +21,6 @@ from twisted.cred import credentials
 from twisted.internet import reactor
 
 class UsersClient(object):
-
     """
     Client set up in buildbot.scripts.runner to send `buildbot user` args
     over a PB connection to perspective_commandline that will execute the

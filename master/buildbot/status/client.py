@@ -37,7 +37,6 @@ def makeRemote(obj):
 
 
 class RemoteBuildSet(pb.Referenceable):
-
     def __init__(self, buildset):
         self.b = buildset
 
@@ -79,7 +78,6 @@ components.registerAdapter(RemoteBuildSet,
 
 
 class RemoteBuilder(pb.Referenceable):
-
     def __init__(self, builder):
         self.b = builder
 
@@ -115,7 +113,6 @@ components.registerAdapter(RemoteBuilder,
 
 
 class RemoteBuildRequest(pb.Referenceable):
-
     def __init__(self, buildreq):
         self.b = buildreq
         # mapping of observers (RemoteReference instances) to local callable
@@ -152,7 +149,6 @@ components.registerAdapter(RemoteBuildRequest,
                            interfaces.IBuildRequestStatus, IRemote)
 
 class RemoteBuild(pb.Referenceable):
-
     def __init__(self, build):
         self.b = build
         self.observers = []
@@ -234,7 +230,6 @@ components.registerAdapter(RemoteBuild,
                            interfaces.IBuildStatus, IRemote)
 
 class BuildSubscriber:
-
     def __init__(self, observer):
         self.observer = observer
 
@@ -260,7 +255,6 @@ class BuildSubscriber:
 
 
 class RemoteBuildStep(pb.Referenceable):
-
     def __init__(self, step):
         self.s = step
 
@@ -301,7 +295,6 @@ components.registerAdapter(RemoteBuildStep,
                            interfaces.IBuildStepStatus, IRemote)
 
 class RemoteSlave:
-
     def __init__(self, slave):
         self.s = slave
 
@@ -318,7 +311,6 @@ components.registerAdapter(RemoteSlave,
                            interfaces.ISlaveStatus, IRemote)
 
 class RemoteEvent:
-
     def __init__(self, event):
         self.e = event
 
@@ -331,7 +323,6 @@ components.registerAdapter(RemoteEvent,
                            interfaces.IStatusEvent, IRemote)
 
 class RemoteLog(pb.Referenceable):
-
     def __init__(self, log):
         self.l = log
 
@@ -357,7 +348,6 @@ components.registerAdapter(RemoteLog, logfile.LogFile, IRemote)
 # TODO: something similar for builder.HTMLLogfile ?
 
 class RemoteChange:
-
     def __init__(self, change):
         self.c = change
 
@@ -412,7 +402,6 @@ class StatusClientPerspective(base.StatusReceiverPerspective):
         'steps': all those plus buildETAUpdate, stepStarted, stepFinished
         'logs': all those plus stepETAUpdate, logStarted, logFinished
         'full': all those plus logChunk (with the log contents)
-        
 
         Messages are defined by buildbot.interfaces.IStatusReceiver .
         'interval' is used to specify how frequently ETAUpdate messages
@@ -568,7 +557,6 @@ class StatusClientPerspective(base.StatusReceiverPerspective):
 
 
 class PBListener(base.StatusReceiverMultiService):
-
     """I am a listener for PB-based status clients."""
 
     compare_attrs = ["port", "cred"]

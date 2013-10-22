@@ -252,7 +252,6 @@ class StatusResourceBuild(HtmlResource):
                 p['label'] = param.label
             ps.append(p)
 
-        
         cxt['responsible_users'] = list(b.getResponsibleUsers())
 
         (start, end) = b.getTimes()
@@ -263,7 +262,7 @@ class StatusResourceBuild(HtmlResource):
         else:
             now = util.now()
             cxt['elapsed'] = util.formatInterval(now - start)
-            
+
         has_changes = False
         for ss in sourcestamps:
             has_changes = has_changes or ss.changes

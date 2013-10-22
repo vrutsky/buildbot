@@ -22,7 +22,6 @@ from twisted.internet import reactor
 from buildbot.clients import base
 
 class TextClient:
-
     def __init__(self, master, events="steps", username="statusClient", passwd="clientpw"):
         """
         @type  master: string

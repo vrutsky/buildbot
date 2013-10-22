@@ -16,7 +16,6 @@
 from buildbot.steps.source.git import Git
 
 class Gerrit(Git):
-
     def __init__(self, **kwargs):
         Git.__init__(self, **kwargs)
 

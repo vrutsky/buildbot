@@ -25,7 +25,6 @@ from buildbot.config import ConfigErrors
 from buildbot.status.results import SUCCESS
 
 class Mercurial(Source):
-
     """ Class for Mercurial with all the smarts """
     name = "hg"
 
@@ -65,7 +64,7 @@ class Mercurial(Source):
                                       at each branch change. Otherwise, just
                                       update to the branch.
         """
-        
+
         self.repourl = repourl
         self.defaultBranch = self.branch = defaultBranch
         self.branchType = branchType
@@ -87,7 +86,7 @@ class Mercurial(Source):
 
         if repourl is None:
             errors.append("you must provide a repourl")
-        
+
         if errors:
             raise ConfigErrors(errors)
 

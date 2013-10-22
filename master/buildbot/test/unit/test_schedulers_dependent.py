@@ -35,7 +35,6 @@ class Dependent(scheduler.SchedulerMixin, unittest.TestCase):
     def makeScheduler(self, upstream=None):
         # build a fake upstream scheduler
         class Upstream(base.BaseScheduler):
-
             def __init__(self, name):
                 self.name = name
         if not upstream:

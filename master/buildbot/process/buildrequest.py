@@ -23,7 +23,6 @@ from buildbot.status.results import FAILURE
 from buildbot.db import buildrequests
 
 class BuildRequest(object):
-
     """
 
     A rolled-up encapsulation of all of the data relevant to a build request.
@@ -156,7 +155,7 @@ class BuildRequest(object):
         other_codebases = set(other.sources.iterkeys())
         if self_codebases != other_codebases:
             return False
-            
+
         for c in self_codebases:
             # Check either both or neither have changes
             if ((len(self.sources[c].changes) > 0)
@@ -164,7 +163,7 @@ class BuildRequest(object):
                 return False
         # all codebases tested, no differences found
         return True
-        
+
     def canBeMergedWith(self, other):
         """
         Returns if both requests can be merged

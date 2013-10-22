@@ -268,7 +268,6 @@ class TestMakeDirectory(steps.BuildStepMixin, unittest.TestCase):
         return self.runStep()
 
 class CompositeUser(buildstep.LoggingBuildStep, slave.CompositeStepMixin):
-
     def __init__(self, payload):
         self.payload = payload
         self.logEnviron=False
@@ -282,7 +281,6 @@ class CompositeUser(buildstep.LoggingBuildStep, slave.CompositeStepMixin):
         self.finished(FAILURE if res else SUCCESS)
 
 class TestCompositeStepMixin(steps.BuildStepMixin, unittest.TestCase):
-
     def setUp(self):
         return self.setUpBuildStep()
 

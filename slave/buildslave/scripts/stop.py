@@ -19,7 +19,6 @@ from buildslave.scripts import base
 
 
 class SlaveNotRunning(Exception):
-
     """
     raised when trying to stop slave process that is not running
     """

@@ -31,7 +31,6 @@ class ChangeSource(service.Service, util.ComparableMixin):
         pass
 
 class PollingChangeSource(ChangeSource):
-
     """
     Utility subclass for ChangeSources that use some kind of periodic polling
     operation.  Subclasses should define C{poll} and set C{self.pollInterval}.

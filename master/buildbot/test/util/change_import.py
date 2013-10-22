@@ -23,7 +23,6 @@ from buildbot.test.util import db
 from buildbot.changes.changes import Change, OldChangeMaster
 
 class ChangeImportMixin(db.RealDatabaseMixin):
-
     """
     We have a number of tests that examine the results of importing particular
     flavors of Change objects.  This class uses some pickling to make this easy

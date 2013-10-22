@@ -63,7 +63,6 @@ gitJsonPayload = """
 """
 
 class TestChangeHookConfiguredWithGitChange(unittest.TestCase):
-
     def setUp(self):
         self.changeHook = change_hook.ChangeHookResource(dialects={'gitlab': True})
 

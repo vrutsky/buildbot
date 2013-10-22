@@ -577,7 +577,7 @@ class BuilderControl:
 
         properties_dict = dict((k,(v,s)) for (k,v,s) in properties.asList())
         ssList = bs.getSourceStamps(absolute=absolute)
-        
+
         if ssList:
             sourcestampsetid = yield  ssList[0].getSourceStampSetId(self.control.master)
             dl = []

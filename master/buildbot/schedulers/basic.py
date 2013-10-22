@@ -22,7 +22,6 @@ from buildbot.changes import filter, changes
 from buildbot.schedulers import base, dependent
 
 class BaseBasicScheduler(base.BaseScheduler):
-
     """
     @param onlyImportant: If True, only important changes will be added to the
                           buildset.
@@ -39,7 +38,6 @@ class BaseBasicScheduler(base.BaseScheduler):
     reason = 'scheduler'
 
     class NotSet: pass
-
     def __init__(self, name, shouldntBeSet=NotSet, treeStableTimer=None,
                 builderNames=None, branch=NotABranch, branches=NotABranch,
                 fileIsImportant=None, properties={}, categories=None,
@@ -214,7 +212,6 @@ class BaseBasicScheduler(base.BaseScheduler):
         return [timer.getTime() for timer in self._stable_timers.values() if timer and timer.active()]
 
 class SingleBranchScheduler(BaseBasicScheduler):
-
     def __init__(self, name, createAbsoluteSourceStamps=False, **kwargs):
         self._lastCodebases = {}
         self.createAbsoluteSourceStamps = createAbsoluteSourceStamps
@@ -282,7 +279,6 @@ class SingleBranchScheduler(BaseBasicScheduler):
 
 
 class Scheduler(SingleBranchScheduler):
-
     "alias for SingleBranchScheduler"
     def __init__(self, *args, **kwargs):
         log.msg("WARNING: the name 'Scheduler' is deprecated; use " +
@@ -293,7 +289,6 @@ class Scheduler(SingleBranchScheduler):
 
 
 class AnyBranchScheduler(BaseBasicScheduler):
-
     def getChangeFilter(self, branch, branches, change_filter, categories):
         assert branch is NotABranch
         return filter.ChangeFilter.fromSchedulerConstructorArgs(

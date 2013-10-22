@@ -16,7 +16,6 @@
 import pprint
 
 class FakeSlaveBuilder:
-
     """
     Simulates a SlaveBuilder, but just records the updates from sendUpdate
     in its updates attribute.  Call show() to get a pretty-printed string

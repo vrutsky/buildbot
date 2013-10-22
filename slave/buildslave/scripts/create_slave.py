@@ -66,7 +66,6 @@ s.setServiceParent(application)
 
 
 class CreateSlaveError(Exception):
-
     """
     Raised on errors while setting up buildslave directory.
     """

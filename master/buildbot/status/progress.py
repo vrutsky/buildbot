@@ -21,7 +21,6 @@ from buildbot import util
 from collections import defaultdict
 
 class StepProgress:
-
     """I keep track of how much progress a single BuildStep has made.
 
     Progress is measured along various axes. Time consumed is one that is
@@ -129,14 +128,12 @@ class StepProgress:
 
 
 class WatcherState:
-
     def __init__(self, interval):
         self.interval = interval
         self.timer = None
         self.needUpdate = 0
 
 class BuildProgress(pb.Referenceable):
-
     """I keep track of overall build progress. I hold a list of StepProgress
     objects.
     """
@@ -169,14 +166,14 @@ class BuildProgress(pb.Referenceable):
         self.finishedSteps.append(stepname)
         if len(self.finishedSteps) == len(self.steps.keys()):
             self.sendLastUpdates()
-            
+
     def newProgress(self):
         r = self.remaining()
         if self.debug:
             print " remaining:", r
         if r != None:
             self.sendAllUpdates()
-        
+
     def remaining(self):
         # sum eta of all steps
         sum = 0
@@ -260,7 +257,6 @@ class BuildProgress(pb.Referenceable):
             self.sendUpdate(remote, 1)
             self.removeWatcher(remote)
 
-        
 class Expectations:
     debug = False
     # decay=1.0 ignores all but the last build
@@ -307,7 +303,7 @@ class Expectations:
             if self.debug:
                 print "new expected time[%s] = %s, old %s, cur %s" % \
                       (name, new, old, current)
-            
+
             for metric, current in stepprogress.progress.items():
                 old = self.steps[name].get(metric)
                 new = self.wavg(old, current)

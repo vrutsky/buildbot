@@ -23,7 +23,6 @@ from buildslave.util import remove_userpassword
 
 
 class Mercurial(SourceBaseCommand):
-
     """Mercurial specific VC operation. In addition to the arguments
     handled by SourceBaseCommand, this command reads the following keys:
 

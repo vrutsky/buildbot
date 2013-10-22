@@ -36,7 +36,6 @@ def generate_cookie():
 
 
 class Session(object):
-
     """I'm a user's session. Contains information about a user's session
     a user can have several session
     a session is associated with a cookie
@@ -72,7 +71,6 @@ class Session(object):
             )
 
 class SessionManager(object):
-
     """I'm the session manager. Holding the current sessions
     managing cookies, and their expiration
 
@@ -91,7 +89,7 @@ class SessionManager(object):
 
     def __init__(self):
         self.__dict__ = self.__shared_state
-        
+
     def new(self, user, infos):
         cookie = generate_cookie()
         user = infos["userName"]

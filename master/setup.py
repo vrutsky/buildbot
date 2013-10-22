@@ -38,7 +38,6 @@ def include(d, e):
     return (d, [f for f in glob.glob('%s/%s'%(d, e)) if os.path.isfile(f)])
 
 class install_data_twisted(install_data):
-
     """make sure data files are installed in package.
     this is evil.
     copied from Twisted/setup.py.

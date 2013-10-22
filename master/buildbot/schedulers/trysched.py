@@ -217,7 +217,6 @@ class Try_Jobdir(TryBase):
 
 
 class Try_Userpass_Perspective(pbutil.NewCredPerspective):
-
     def __init__(self, scheduler, username):
         self.scheduler = scheduler
         self.username = username

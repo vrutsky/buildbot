@@ -20,7 +20,6 @@ from buildslave.test.util import misc
 
 
 class TestStartCommand(unittest.TestCase, misc.IsBuildslaveDirMixin):
-
     """
     Test buildslave.scripts.startup.startCommand()
     """

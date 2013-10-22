@@ -63,7 +63,6 @@ def split_file_projects_branches(path):
     return f
 
 class SVNPoller(base.PollingChangeSource, util.ComparableMixin):
-
     """
     Poll a Subversion repository for changes and submit them to the change
     master.

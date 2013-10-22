@@ -22,7 +22,6 @@ from buildbot.util import maildir
 from buildbot.test.util import dirs
 
 class TestMaildirService(dirs.DirsMixin, unittest.TestCase):
-
     def setUp(self):
         self.maildir = os.path.abspath("maildir")
         self.newdir = os.path.join(self.maildir, "new")

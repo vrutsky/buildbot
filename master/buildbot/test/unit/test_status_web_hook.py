@@ -21,7 +21,6 @@ from buildbot.test.fake.web import FakeRequest
 from twisted.trial import unittest
 
 class TestChangeHookUnconfigured(unittest.TestCase):
-
     def setUp(self):
         self.request = FakeRequest()
         self.changeHook = change_hook.ChangeHookResource()
@@ -63,7 +62,6 @@ class TestChangeHookUnconfigured(unittest.TestCase):
         return d
 
 class TestChangeHookConfigured(unittest.TestCase):
-
     def setUp(self):
         self.request = FakeRequest()
         self.changeHook = change_hook.ChangeHookResource(dialects={'base' : True})
@@ -135,7 +133,6 @@ class TestChangeHookConfigured(unittest.TestCase):
         def namedModuleMock(name):
             if name == 'buildbot.status.web.hooks.base':
                 class mock_hook_module(object):
-
                     def getChanges(self, request, options):
                         raise AssertionError
                 return mock_hook_module()
@@ -153,7 +150,6 @@ class TestChangeHookConfigured(unittest.TestCase):
         return d
 
 class TestChangeHookConfiguredBogus(unittest.TestCase):
-
     def setUp(self):
         self.request = FakeRequest()
         self.changeHook = change_hook.ChangeHookResource(dialects={'garbage' : True})

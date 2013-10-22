@@ -20,7 +20,6 @@ from buildbot.test.fake import remotecommand, fakebuild, slave
 
 
 class BuildStepMixin(object):
-
     """
     Support for testing build steps.  This class adds two capabilities:
 
@@ -195,7 +194,7 @@ class BuildStepMixin(object):
         Expect a logfile with the given contents
         """
         self.exp_logfiles[logfile] = contents
-    
+
     def expectHidden(self, hidden):
         """
         Set whether the step is expected to be hidden.

@@ -51,11 +51,9 @@ COMMASPACE = ', '
 PROGRAM = sys.argv[0]
 
 class SmtplibMock:
-
     """I stand in for smtplib for testing purposes.
     """
     class SMTP:
-
         """I stand in for smtplib.SMTP connection for testing purposes.
         I copy the message to stdout.
         """
@@ -65,7 +63,6 @@ class SmtplibMock:
             pass
         def sendmail(self, address, email, msg):
             sys.stdout.write( msg )
-        
 
 rfc822_specials_re = re.compile(r'[\(\)\<\>\@\,\;\:\\\"\.\[\]]')
 
@@ -127,7 +124,7 @@ X-Mailer: Python buildbot-cvs-mail %(version)s
         print >> s
         resp = conn.sendmail(address, options.email, s.getvalue())
         conn.close()
-    
+
 def fork_and_send_mail(options):
     # cannot wait for child process or that will cause parent to retain cvs
     # lock for too long.  Urg!
@@ -224,11 +221,11 @@ def get_options():
         options.smtplib = SmtplibMock
 
     return options
-        
+
 # scan args for options
 def main():
     options = get_options()
-    
+
     if options.verbose:
         print 'Mailing %s...' % options.email
         print 'Generating notification message...'

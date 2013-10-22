@@ -22,7 +22,6 @@ from buildslave.test.util import misc
 
 
 class TestIsBuildslaveDir(misc.FileIOMixin, unittest.TestCase):
-
     """Test buildslave.scripts.base.isBuildslaveDir()"""
 
     def setUp(self):

@@ -25,7 +25,6 @@ from buildbot.config import ConfigErrors
 from buildbot.status.results import SUCCESS
 
 class Monotone(Source):
-
     """ Class for Monotone with all smarts """
 
     name = 'monotone'
@@ -52,7 +51,7 @@ class Monotone(Source):
             errors.append("mode %s is not one of %s" % (self.mode, self.possible_modes))
         if self.mode == 'incremental' and self.method:
             errors.append("Incremental mode does not require method")
-        
+
         if self.mode == 'full':
             if self.method == None:
                 self.method = 'copy'

@@ -41,7 +41,6 @@ debug_logging = False
 
 
 class P4(Source):
-
     """Perform Perforce checkout/update operations."""
 
     name = 'p4'

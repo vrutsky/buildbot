@@ -18,7 +18,6 @@ from buildbot.steps.shell import ShellCommand
 from buildbot.status.results import SUCCESS, FAILURE
 
 class SubunitShellCommand(ShellCommand):
-
     """A ShellCommand that sniffs subunit output.
     """
 
@@ -28,7 +27,7 @@ class SubunitShellCommand(ShellCommand):
 
         # importing here gets around an import loop
         from buildbot.process import subunitlogobserver
-        
+
         self.ioObverser = subunitlogobserver.SubunitLogObserver()
         self.addLogObserver('stdio', self.ioObverser)
         self.progressMetrics = self.progressMetrics + ('tests', 'tests failed')
@@ -80,7 +79,7 @@ class SubunitShellCommand(ShellCommand):
         self.results = results
         self.text = text
         self.text2 = [text2]
-        
+
     def evaluateCommand(self, cmd):
         if cmd.didFail():
             return FAILURE

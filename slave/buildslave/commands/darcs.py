@@ -20,7 +20,6 @@ from buildslave import runprocess
 
 
 class Darcs(SourceBaseCommand):
-
     """Darcs-specific VC operation. In addition to the arguments
     handled by SourceBaseCommand, this command reads the following keys:
 

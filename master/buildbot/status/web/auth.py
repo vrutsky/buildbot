@@ -22,7 +22,6 @@ from buildbot.status.web.base import path_to_authfail
 from buildbot.process.users import users
 
 class IAuth(Interface):
-
     """
     Represent an authentication method.
 
@@ -153,7 +152,6 @@ class HTPasswdAprAuth(HTPasswdAuth):
             return HTPasswdAuth.validatePassword(self, passwd, hash)
 
 class UsersAuth(AuthBase):
-
     """Implement authentication against users in database"""
     implements(IAuth)
 

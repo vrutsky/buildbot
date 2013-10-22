@@ -33,7 +33,6 @@ _hush_pyflakes = [WithProperties]
 del _hush_pyflakes
 
 class ShellCommand(buildstep.LoggingBuildStep):
-
     """I run a single shell command on the buildslave. I return FAILURE if
     the exit code of that command is non-zero, SUCCESS otherwise. To change
     this behavior, override my .evaluateCommand method, or customize
@@ -242,12 +241,12 @@ class ShellCommand(buildstep.LoggingBuildStep):
             if self.slaveVersionIsOlderThan("svn", "2.7"):
                 warnings.append("NOTE: slave does not allow master to override usePTY\n")
                 del kwargs['usePTY']
-        
+
         # check for the interruptSignal flag
         if kwargs.has_key('interruptSignal') and self.slaveVersionIsOlderThan("shell", "2.15"):
             warnings.append("NOTE: slave does not allow master to specify interruptSignal\n")
             del kwargs['interruptSignal']
-        
+
         return kwargs
 
     def start(self):
@@ -359,7 +358,6 @@ class Configure(ShellCommand):
     command = ["./configure"]
 
 class StringFileWriter(pb.Referenceable):
-
     """
     FileWriter class that just puts received data into a buffer.
 

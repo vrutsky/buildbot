@@ -136,7 +136,6 @@ mercurialJsonNoCommitsPayload = """{
 
 
 class TestChangeHookConfiguredWithBitbucketChange(unittest.TestCase):
-
     """Unit tests for BitBucket Change Hook
     """
 

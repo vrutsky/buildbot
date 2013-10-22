@@ -31,7 +31,6 @@ from buildbot.interfaces import IChangeSource
 from buildbot.util.maildir import MaildirService
 
 class MaildirSource(MaildirService, util.ComparableMixin):
-
     """Generic base class for Maildir-based change sources"""
     implements(IChangeSource)
 
@@ -79,7 +78,7 @@ class CVSMaildirSource(MaildirSource):
                  repository='', properties={}):
         MaildirSource.__init__(self, maildir, prefix, category, repository)
         self.properties = properties
-        
+
     def parse(self, m, prefix=None):
         """Parse messages sent by the 'buildbot-cvs-mail' program.
         """
@@ -100,7 +99,7 @@ class CVSMaildirSource(MaildirSource):
         # part of the mail header, so use that.
         # This assumes cvs is being access via ssh or pserver, so the time
         # will be the CVS server's time.
-        
+
         # calculate a "revision" based on that timestamp, or the current time
         # if we're unable to parse the date.
         log.msg('Processing CVS mail')
@@ -109,7 +108,7 @@ class CVSMaildirSource(MaildirSource):
             when = util.now()
         else:
             when = mktime_tz(dateTuple)
-            
+
         theTime =  datetime.datetime.utcfromtimestamp(float(when))
         rev = theTime.strftime('%Y-%m-%d %H:%M:%S')
 
@@ -217,7 +216,7 @@ class CVSMaildirSource(MaildirSource):
                 raise ValueError('CVSMaildirSource cvs 1.12 require path. Check cvs loginfo config')
         else:
             raise ValueError('Expected cvsmode 1.11 or 1.12. got: %s' % cvsmode)
-        
+
         log.msg("CVSMaildirSource processing filelist: %s" % fileList)
         while(fileList):
             m = singleFileRE.match(fileList)
@@ -232,7 +231,7 @@ class CVSMaildirSource(MaildirSource):
         while lines:
             line = lines.pop(0)
             comments += line
-            
+
         comments = comments.rstrip() + "\n"
         if comments == '\n':
             comments = None

@@ -23,7 +23,6 @@ from buildslave.util import Obfuscated
 
 
 class P4Base(SourceBaseCommand):
-
     """Base class for P4 source-updaters
 
     ['p4port'] (required): host:port for server to access
@@ -73,7 +72,6 @@ class P4Base(SourceBaseCommand):
 
 
 class P4(P4Base):
-
     """A P4 source-updater.
 
     ['p4port'] (required): host:port for server to access
