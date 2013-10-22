@@ -274,6 +274,7 @@ class CompactBuilder(Builder):
 '''
 
 class Box:
+
     def __init__(self, text="?"):
         self.text = text
         self.box = gtk.EventBox()
@@ -327,6 +328,7 @@ class Box:
 
 
 class ThreeRowBuilder:
+
     def __init__(self, name, ref):
         self.name = name
 
@@ -408,6 +410,7 @@ class ThreeRowBuilder:
 
 
 class ThreeRowClient(pb.Referenceable):
+
     def __init__(self, window):
         self.window = window
         self.buildernames = []

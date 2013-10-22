@@ -31,6 +31,7 @@ from buildbot.util.eventual import eventually
 
 
 class Build(properties.PropertiesMixin):
+
     """I represent a single build by a single slave. Specialized Builders can
     use subclasses of Build to hold status information unique to those build
     processes.
@@ -247,8 +248,8 @@ class Build(properties.PropertiesMixin):
             self.setupBuild(expectations) # create .steps
         except:
             # the build hasn't started yet, so log the exception as a point
-            # event instead of flunking the build. 
-            # TODO: associate this failure with the build instead. 
+            # event instead of flunking the build.
+            # TODO: associate this failure with the build instead.
             # this involves doing
             # self.build_status.buildStarted() from within the exception
             # handler
